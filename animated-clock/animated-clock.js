@@ -26,7 +26,6 @@ console.log('boom');
 		ctx.restore();
 		//minutes marks
 		for(var i = 0 ; i < 60 ; i++){
-			
 
 			//draw if does not intersect hours marks
 			if(i % 5 != 0){
@@ -41,6 +40,25 @@ console.log('boom');
 		}
 
 		ctx.restore();
+
+
+		//current time
+		var sec = now.getSeconds();
+		var min = now.getMinutes();
+		var hr = now.getHours();
+		hr = hr > 12 ? hr - 12 : hr;
+
+		ctx.fillStyle = "black";
+
+		//write hours
+		ctx.save();
+		ctx.rotate(hr * (Math.PI/6) + (Math.PI/3600) * min + (Math.PI/1800) * sec);
+		ctx.beginPath();
+		ctx.moveTo(-28,0);
+		ctx.lineTo(128,0);
+		ctx.stroke();
+		ctx.restore();
+
 	}
 
 
